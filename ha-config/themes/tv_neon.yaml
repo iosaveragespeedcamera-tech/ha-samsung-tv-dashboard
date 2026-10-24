@@ -1,0 +1,19 @@
+tv_neon:
+  primary-color: "#4de1ff"
+  accent-color: "#ff5ad9"
+  primary-background-color: "#070a18"
+  primary-text-color: "#f2f6ff"
+  lovelace-background: "radial-gradient(circle at 15% 10%, #1b2a6b 0%, transparent 45%), radial-gradient(circle at 85% 90%, #5a1b6b 0%, transparent 45%), linear-gradient(135deg, #070a18, #0d1230)"
+  ha-card-background: "rgba(16,22,46,0.72)"
+  ha-card-border-radius: 28px
+  ha-card-border-color: "rgba(130,170,255,0.18)"
+  ha-card-box-shadow: "0 8px 32px rgba(0,0,0,0.45)"
+  ha-card-header-font-size: 26px
+  ha-tile-info-primary-font-size: 22px
+  ha-tile-info-primary-font-weight: 500
+  ha-tile-info-secondary-font-size: 17px
+  mush-chip-height: 48px
+  mush-chip-font-size: 21px
+  mush-chip-icon-size: 26px
+  mush-chip-spacing: 12px
+  mush-spacing: 14px
