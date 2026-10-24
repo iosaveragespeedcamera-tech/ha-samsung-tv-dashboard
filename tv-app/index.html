@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HA Dashboard</title>
+<style>
+  html,body{margin:0;height:100%;background:#111;color:#fff;font-family:sans-serif}
+  #msg{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;font-size:36px;text-align:center}
+  small{font-size:24px;opacity:.7;margin-top:20px}
+</style>
+</head>
+<body>
+<div id="msg">Loading Home Assistant…<small id="url"></small></div>
+<script>
+// ====== EDIT THIS: your dashboard address ======
+var HA_URL = "http://192.168.1.20:8123/tv-hub/home";
+// ===============================================
+document.getElementById("url").textContent = HA_URL;
+function go() { window.location.replace(HA_URL); }
+function tryLoad() {
+  var timer = setTimeout(fail, 8000);
+  fetch(HA_URL.split("/").slice(0,3).join("/") + "/manifest.json", { mode: "no-cors", cache: "no-store" })
+    .then(function () { clearTimeout(timer); go(); })
+    .catch(function () { clearTimeout(timer); fail(); });
+}
+function fail() {
+  document.getElementById("msg").innerHTML =
+    "Can't reach Home Assistant<small>" + HA_URL + "<br>Retrying in 10 seconds. Press OK to retry now, RETURN to exit.</small>";
+  setTimeout(tryLoad, 10000);
+}
+document.addEventListener("keydown", function (e) {
+  if (e.keyCode === 13) { tryLoad(); }
+  if (e.keyCode === 10009 && window.tizen) { tizen.application.getCurrentApplication().exit(); }
+});
+tryLoad();
+</script>
+</body>
+</html>
